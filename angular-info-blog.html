@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+	code {
+		padding-left: 10px;
+	}
+	.editor-container {
+		background-color: #f5f7f8;
+		border: 1px solid black;
+		width: 70%;
+	}
+	
+	body {
+		padding-left: 20px;
+	}
+	
+	.main-container {
+		padding-left: 20px;
+	}
+	
+	.sub-container {
+		padding-left: 20px;
+	}
+	
+	table,
+	tr,
+	th,
+	td {
+		border: 1px solid black;
+	}
+	
+	summary::-webkit-details-marker {
+		color: #00ACF3;
+		font-size: 125%;
+		margin-right: 2px;
+	}
+	
+	summary:focus {
+		outline-style: none;
+	}
+	
+	article>details>summary {
+		font-size: 28px;
+		margin-top: 16px;
+	}
+	
+	details>p {
+		margin-left: 24px;
+	}
+	
+	details details {
+		margin-left: 36px;
+	}
+	
+	details details summary {
+		font-size: 16px;
+	}
+	</style>
+</head>
+
+<body>
+	<section>
+		<h1>Angular Basics</h1>
+		<p>This blog is written to learn angular basics with working examples.</p>
+		<h1>What is angular?</h1>
+		<p>One of the most popular and frequently used front-end development frameworks is Angular.Mobile and desktop applications can be built
+			<br>using this platform. Angular is used by a number of cutting-edge organizations to construct modern web applications </p>
+		<article>
+			<details>
+				<summary>1. Angular cmd's to use in Terminal window</summary>
+				<div class="main-container">
+					<h3>1. To create angular project</h3>
+					<div class="sub-container">
+						<div class="editor-container"> <code> ng new myFirstApp </code> </div>
+						<p>by running this cmd in terminal window our new project will create with defaults file.</p>
+						<p>When we create our new applications our default angular components are app components. </p>
+						<div class="editor-container">
+							<p><code> app.component.ts </code>-> The component class code, written in TypeScript.</p>
+							<p><code> app.component.html </code>-> The component template, written in HTML.</p>
+							<p><code> app.component.css </code>-> The component's private CSS styles.</p>
+						</div>
+					</div>
+					<h3>2. To run (serve) our application</h3>
+					<div class="sub-container">
+						<div class="editor-container"> <code> ng serve </code> </div>
+						<p>by running this cmd in terminal window our new project will start to run in default port http://localhost:4200</p>
+					</div>
+					<h3>3. To Create a module</h3>
+					<div class="sub-container">
+						<div class="editor-container"> <code> ng generate module student </code> </div>
+						<p>by running this cmd in terminal window new module will created</p>
+						<div class="editor-container"> <code> student.module.ts </code> </div>
+					</div>
+					<h3>4. To Create a component inside module</h3>
+					<div class="sub-container">
+						<div class="editor-container"> <code> ng generate component student/studentlist </code> </div>
+						<p>by running this cmd in terminal window new component will create inside stude module along with 4 files. Those files are</p>
+						<div class="editor-container"> <code> studentlist.component.css </code>
+							<br> <code> studentlist.component.html </code>
+							<br> <code> studentlist.component.spec.ts </code>
+							<br> <code> studentlist.component.ts </code> </div>
+						<p>You can see that all of the components are created inside the <b>app >> student</b> folder</p>
+					</div>
+					<h3>5. To Create a service</h3>
+					<div class="sub-container">
+						<div class="editor-container"> <code> ng generate service student/student </code> </div>
+						<p>This cmd will create student service inside our student module. and file name will be like this</p>
+						<div class="editor-container"> <code> student.service.ts </code> </div>
+					</div>
+				</div>
+			</details>
+		</article>
+		<article>
+			<details>
+				<summary>2. Data bindings in angular</summary>
+				<div class="main-container">
+					<p>Data binding is the core concept of Angular and used to define the communication between a component and the DOM. It is a technique to link
+						<br>your data to your view layer. In simple words, you can say that data binding is a communication between your typescript code of your component
+						<br>and your template which user sees. </p>
+					<p>Data binding can be either one-way data binding or two-way data binding.</p>
+					<div class="sub-container">
+						<h3>One-way databinding</h3>
+						<p>One way data binding is a simple one way communication between typescript file and html file.We can bind data from typescript file to
+							<br>html file. In this method we can view our model in html. But we can't change our model from view.Angular Interpolation / String
+							<br>Interpolation, Property Binding, and Event Binding are the example of one-way databinding. </p>
+						<h4>For Example:</h4>
+						<div class="editor-container"> <code>//component.html</code>
+							<br>
+							<br> <code>Title: {{ data }}</code> </div>
+						<p>This way we can bind our value from ts file into html view.</p>
+						<p>in ts file we have value called Angular project in the variable data.</p>
+						<div class="editor-container"> <code>//component.ts</code>
+							<br>
+							<br> <code>public data: string = "Angular Ptoject";</code> </div>
+						<p>In this way if we run our application the html file will render with a given value.</p>
+						<div class="editor-container"> <code>//in browser</code>
+							<br>
+							<br> <code>Title: Angular Ptoject</code> </div>
+						<h3>Two-way databinding</h3>
+						<p>In two-way databinding, automatic synchronization of data happens between the Model and the View. Here, change is reflected in both
+							<br>components. Whenever you make changes in the Model, it will be reflected in the View and when you make changes in View, it will be
+							<br>reflected in Model. </p>
+						<p>This happens immediately and automatically, ensures that the HTML template and the TypeScript code are updated at all times.</p>
+						<h5>Angular provides four types of data binding and they are different on the way of data flowing.</h5>
+						<ul>
+							<li>String Interpolation</li>
+							<li>Property Binding</li>
+							<li>Event Binding</li>
+							<li>Two-way binding</li>
+						</ul>
+						<h4>* String Interpolation</h4>
+						<p>We have already seen working example for string interpolation (One-way databinding)</p>
+						<h4>Syntax:</h4>
+						<div class="editor-container"> <code>{{ data }}</code> </div>
+						<h4>* Property Binding</h4>
+						<p>Property Binding is also a one-way data binding technique. In property binding, we bind a property of a DOM element to a field
+							<br>which is a defined property in our component TypeScript code. </p>
+						<h4>For Example:</h4>
+						<div class="editor-container"> <code>//component.html</code>
+							<br>
+							<br> <code>&lt;img [src]="imgUrl"/&gt;</code> </div>
+						<h4>* Event Binding</h4>
+						<p>event binding is used to handle the events raised from the DOM like button click, mouse move etc. When the DOM event happens
+							<br>(eg. click, change, keyup), it calls the specified method in the component. In the following example, the cookBacon() method
+							<br>from the component is called when the button is clicked </p>
+						<h4>For Example:</h4>
+						<div class="editor-container"> <code>//component.html</code>
+							<br>
+							<br> <code>&nbsp;&lt;button (click)="cookBacon()"&gt;&lt;/button&gt;</code>
+							<br>
+							<br> <code>//component.ts</code>
+							<br>
+							<br> <code>&nbsp;cookBacon() {</code>
+							<br> <code>&nbsp;&nbsp;console.log("Entered into method");</code>
+							<br> <code>&nbsp;}</code>
+							<br> <code></code> </div>
+						<p>After clicking on the button "Entered into method" will print in console.</p>
+						<h4>* Two-way Data Binding</h4>
+						<p>We have seen that in one-way data binding any change in the template (view) were not be reflected in the component TypeScript code.
+							<br>To resolve this problem, Angular provides two-way data binding. The two-way binding has a feature to update data from component to
+							<br>view and vice-versa. </p>
+						<p>In two way data binding, property binding and event binding are combined together.</p>
+						<h4>Syntax:</h4>
+						<div class="editor-container"> <code>//component.html</code>
+							<br>
+							<br> <code>[(ngModel)] = "[property of your component]"</code> </div>
+					</div>
+				</div>
+			</details>
+		</article>
+		<article>
+			<details>
+				<summary>3. Directives</summary>
+				<div class="main-container">
+					<p>Using Angular directives, you can change the appearance, behavior or a layout of a DOM element. It also helps you to extend HTML.</p>
+					<ul>
+						<li>Component Directives</li>
+						<li>Structural Directives</li>
+						<li>Attribute Directives</li>
+					</ul>
+					<div class="sub-container">
+						<p><b>Component Directives:</b> Component directives are used in main class. They contain the detail of how the component should be processed,
+							<br>instantiated and used at runtime. </p>
+						<p><b>Structural Directives:</b> Structural directives start with a * sign. These directives are used to manipulate and change the structure of
+							<br>the DOM elements. For example, *ngIf directive, *ngSwitch directive, and *ngFor directive. </p>
+						<ul>
+							<li>
+								<p><b>*ngIf Directive:</b> The ngIf allows us to Add/Remove DOM Element.</p>
+							</li>
+							<h4>Example:</h4>
+							<div class="editor-container"> <code>//component.html</code>
+								<br>
+								<br> <code>&lt;p *ngIf="condition"&gt;  </code>
+								<br> <code>condition is true then this text will visible.</code>
+								<br> <code>&lt;/p&gt;</code>
+								<br> <code>&lt;p *ngIf="!condition"&gt;</code>
+								<br> <code>condition is false then this text will visible.</code>
+								<br> <code>&lt;/p&gt;  </code>
+								<br> <code>&lt;button (click)="changeVisibility()"&gt;{{condition ? 'content1' : 'content2'}}&lt;/button&gt;</code> </div>
+							<br>
+							<div class="editor-container"> <code>//component.ts</code>
+								<br>
+								<br> <code>public condition: boolean = true;</code>
+								<br> <code>export class NgIfExample { </code>
+								<br> <code>ngOnInit() {} </code>
+								<br> <code>changeVisibility() {</code>
+								<br> <code>&nbsp;&nbsp;this.condition = !this.condition;</code>
+								<br> <code>&nbsp;}</code>
+								<br> <code>}</code>
+								<br> </div>
+							<li>
+								<p><b>*ngSwitch Directive:</b> The *ngSwitch allows us to Add/Remove DOM Element. It is similar to switch case</p>
+							</li>
+							<li>
+								<p><b>*ngFor Directive:</b> The *ngFor directive is used to repeat a portion of HTML template once per each item from an iterable list (Collection).</p>
+							</li>
+							<h4>Syntax:</h4>
+							<div class="editor-container"> <code>&lt;li *ngFor="let item of items;"&gt; .... &lt;/li&gt;  </code> </div>
+							<h4>Example:</h4>
+							<div class="editor-container">
+								<ol start="1" class="dp-j">
+									<p>//component.html</p>
+									<br>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&nbsp;<span class="keyword">class</span><span>=</span><span class="string">'table'</span><span>&gt;&nbsp;&nbsp;</span></span>
+									</li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;thead&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;&nbsp;&nbsp;</span></li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Name&lt;/th&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Age&lt;/th&gt;&nbsp;&nbsp;</span></li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Class&lt;/th&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;StudentId&nbsp;&lt;/th&gt;&nbsp;&nbsp;</span></li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/thead&gt;&nbsp;&nbsp;</span></li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tbody&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&nbsp;*ngFor=<span class="string">"let&nbsp;item&nbsp;of&nbsp;studentsList;"</span><span>&gt;&nbsp;&nbsp;</span></span>
+									</li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{movie.name}}&lt;/td&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{movie.age}}&lt;/td&gt;&nbsp;&nbsp;</span></li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{movie.class}}&lt;/td&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{movie.section}}&lt;/td&gt;&nbsp;&nbsp;</span></li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tbody&gt;&nbsp;&nbsp;</span></li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;&nbsp;&nbsp;</span></li>
+								</ol>
+							</div>
+							<br>
+							<div class="editor-container"> <code>//component.ts</code>
+								<br>
+								<br> <code>public studentsList: any[] = [</code>
+								<br> <code>&nbsp;&nbsp;{name: 'Ranjith', age: 25, class: '10th', section: 'A' },</code>
+								<br> <code>&nbsp;&nbsp;{name: 'Hari', age: 22, class: '8th', section: 'B' },</code>
+								<br> <code>&nbsp;&nbsp;{name: 'Vignesh', age: 22, class: '8th', section: 'A' },</code>
+								<br> <code>]</code>
+								<br> <code>export class NgForExample { </code>
+								<br> <code>ngOnInit() {} </code>
+								<br> <code>}</code>
+								<br> </div>
+							<br>
+							<div class="editor-container"> <code>//In Browser</code>
+								<br>
+								<br>
+								<table>
+									<tr>
+										<th>Name</th>
+										<th>Age</th>
+										<th>Class</th>
+										<th>Section</th>
+									</tr>
+									<tr>
+										<td>Ranjith</td>
+										<td>25</td>
+										<td>10th</td>
+										<td>A</td>
+									</tr>
+									<tr>
+										<td>Hari</td>
+										<td>22</td>
+										<td>8th</td>
+										<td>B</td>
+									</tr>
+									<tr>
+										<td>Vignesh</td>
+										<td>22</td>
+										<td>8th</td>
+										<td>A</td>
+									</tr>
+								</table>
+							</div>
+						</ul>
+						<p><b>Attribute Directives:</b> Attribute directives are used to change the look and behavior of the DOM elements. For example: ngClass directive, and
+							<br>ngStyle directive etc. </p>
+						<ul>
+							<li>
+								<p><b>ngClass Directive:</b> The ngClass directive is used to add or remove CSS classes to an HTML element.</p>
+							</li>
+							<li>
+								<p><b>ngStyle Directive:</b> The ngStyle directive facilitates you to modify the style of an HTML element using the expression. You can also
+									<br>use ngStyle directive to dynamically change the style of your HTML element. </p>
+							</li>
+							<h4>Syntax:</h4>
+							<div class="editor-container"> <code>
+                              &lt;div [ngStyle]="{'background-color':'green'}" &gt;
+                              &lt;/div&gt;
+                           </code> </div>
+							<p>The NgStyle directive lets you set a given DOM elements style properties.</p>
+							<p>This sets the background color of the div to green.</p>
+							<p>ngStyle becomes much more useful when the value is dynamic. The values in the object literal that we assign to ngStyle can be JavaScript
+								<br>expressions which are evaluated and the result of that expression is used as the value of the CSS property, like this: </p>
+							<h4>Example:</h4>
+							<div class="editor-container"> <code>
+                                 &lt;div [ngStyle]="{'background-color':person.country === 'UK' ? 'green' : 'red' }"&gt;&lt;/<div&gt;</
+                                 <div>
+                              </code> </div>
+							<p>Now we are going to add ngStyle for studentList table based on section.If the section is A that cell will shown in green color
+								<br> if the section is B then the table cell will shown in red color. </p>
+							<div class="editor-container">
+								<ol start="1" class="dp-j">
+									<p>//component.html</p>
+									<br>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&nbsp;<span class="keyword">class</span><span>=</span><span class="string">'table'</span><span>&gt;&nbsp;&nbsp;</span></span>
+									</li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;thead&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;&nbsp;&nbsp;</span></li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Name&lt;/th&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Age&lt;/th&gt;&nbsp;&nbsp;</span></li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Class&lt;/th&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;StudentId&nbsp;&lt;/th&gt;&nbsp;&nbsp;</span></li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/thead&gt;&nbsp;&nbsp;</span></li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tbody&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&nbsp;*ngFor=<span class="string">"let&nbsp;item&nbsp;of&nbsp;studentsList;"</span><span>&gt;&nbsp;&nbsp;</span></span>
+									</li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{item.name}}&lt;/td&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{item.age}}&lt;/td&gt;&nbsp;&nbsp;</span></li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{item.class}}&lt;/td&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;[ngStyle]="{'background-color':item.section === 'A' ? 'green' : 'red' }"&nbsp;&gt;{{item.section}}&lt;/td&gt;&nbsp;&nbsp;</span></li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;&nbsp;&nbsp;</span></li>
+									<li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tbody&gt;&nbsp;&nbsp;</span></li>
+									<li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;&nbsp;&nbsp;</span></li>
+								</ol>
+							</div>
+							<br>
+							<div class="editor-container"> <code>//In Browser</code>
+								<br>
+								<br>
+								<table>
+									<tr>
+										<th>Name</th>
+										<th>Age</th>
+										<th>Class</th>
+										<th>Section</th>
+									</tr>
+									<tr>
+										<td>Ranjith</td>
+										<td>25</td>
+										<td>10th</td>
+										<td style="background-color: green">A</td>
+									</tr>
+									<tr>
+										<td>Hari</td>
+										<td>22</td>
+										<td>8th</td>
+										<td style="background-color: red">B</td>
+									</tr>
+									<tr>
+										<td>Vignesh</td>
+										<td>22</td>
+										<td>8th</td>
+										<td style="background-color: green">A</td>
+									</tr>
+								</table>
+							</div>
+						</ul>
+					</div>
+			</details>
+		</article>
+		<article>
+			<details>
+				<summary>4. What is an AOT compilation? What are its advantages?</summary>
+				<div class="main-container">
+					<p>The Ahead-of-time (AOT) compiler converts the Angular HTML and TypeScript code into JavaScript code during the build phase, i.e., before the
+						<br>browser downloads and runs the code.</p>
+					<p>Some of its advantages are as follows. </p>
+					<ul>
+						<li>Faster rendering</li>
+						<li>Fewer asynchronous requests</li>
+						<li>Smaller Angular framework download size</li>
+						<li>Quick detection of template errors</li>
+						<li>Better security</li>
+					</ul>
+				</div>
+			</details>
+		</article>
+		<article>
+			<details>
+				<summary>5. lifecycle hooks in Angular</summary>
+				<div class="main-container">
+					<p>In Angular, every component has a lifecycle. Angular creates and renders these components and also destroys them before removing them from the DOM.
+						<br>This is achieved with the help of lifecycle hooks. Here's the list of them - </p>
+					<ul>
+						<li>ngOnChanges() - Responds when Angular sets/resets data-bound input properties.</li>
+						<li>ngOnInit() - Initialize the directive/component after Angular first displays the data-bound properties and sets the directive/component's input properties/</li>
+						<li>ngDoCheck() - Detect and act upon changes that Angular can't or won't detect on its own</li>
+						<li>ngAfterContentInit() - Responds after Angular projects external content into the component's view</li>
+						<li>ngAfterContentChecked() - Respond after Angular checks the content projected into the component.</li>
+						<li>ngAfterViewInit() - Respond after Angular initializes the component's views and child views.</li>
+						<li>ngAfterViewChecked() - Respond after Angular checks the component's views and child views</li>
+						<li>ngOnDestroy - Cleanup just before Angular destroys the directive/component.</li>
+					</ul>
+				</div>
+			</details>
+		</article>
+		<article>
+			<details>
+				<summary>6. Routing</summary>
+				<div class="main-container">
+					<p><b>Routing</b> in Angular allows the users to create a single-page application with multiple views and allows navigation between them. Users can switch
+						<br>between these views without losing the application state and properties.</p>
+					<h4>Syntax:</h4>
+					<div class="editor-container"> <code>&lt;li&gt;&lt;a routerLink="/about" &gt;About Us&lt;/a&gt;&lt;/li&gt;</code> </div>
+					<br>
+					<div class="editor-container"> <code>//In Browser</code>
+						<br> <a href="https://angular.io/start">About Us</a> </div>
+					<p>By clicking on About Us link it will redirect to angula.io home page</p>
+					<p>Like this we will declare router link inside our application navigation or third party links</p>
+				</div>
+			</details>
+		</article>
+		<article>
+			<details>
+				<summary>7. Pipe</summary>
+				<div class="main-container">
+					<p>Pipes were earlier called filters in Angular1 and called pipes in Angular 2 and 4.</p>
+					<h4>Syntax:</h4>
+					<div class="editor-container"> <code>{{ Welcome to Angular 4 | lowercase}}</code> </div>
+					<br>
+					<p>It takes integers, strings, arrays, and date as input separated with | to be converted in the format as required and display the
+						<br>same in the browser</p>
+					<p>Here, we want to display the text given to uppercase. This can be done using pipes as follows −</p>
+					<div class="editor-container"> <code>//component.ts</code>
+						<br>
+						<br> <code>public title: string = "Angular Project";</code> </div>
+					<br>
+					<div class="editor-container"> <code>//component.html</code>
+						<br>
+						<br> <code><b>{{title | uppercase}}</b><br/></code> <code><b>{{title | lowercase}}</b><br/></code> </div>
+					<br>
+					<div class="editor-container"> <code>//In Browser</code>
+						<br>
+						<br> <code><b>ANGULAR PROJECT</b><br/></code> <code><b>angular project</b><br/></code> </div>
+					<p>Angular 4 provides some built-in pipes. The pipes are listed below −</p>
+					<ul>
+						<li>Lowercasepipe</li>
+						<li>Uppercasepipe</li>
+						<li>Datepipe</li>
+						<li>Currencypipe</li>
+						<li>Jsonpipe</li>
+						<li>Percentpipe</li>
+						<li>Decimalpipe</li>
+						<li>Slicepipe</li>
+					</ul>
+				</div>
+			</details>
+		</article>
+		<article>
+			<details>
+				<summary>8. Parent to Child and Child to Parent Communication</summary>
+				<div class="main-container">
+					<p>In this example we are going to pass string value from parent component to child component</p>
+					<p>Let’s create two components:</p>
+					<p><b>Parent</b> ts file</p>
+					<p>Fom parent component we will pass valueToChild as a Input to Child Component</p>
+					<div class="editor-container"> <code>//parentcomponent.ts</code>
+						<br>
+						<br> <code>public valueToChild: string = 'Im from parent component";</code>
+						<br>
+						<br> <code>export class ParentComponent { </code>
+						<br>
+						<br> <code>ngOnInit() {} </code>
+						<br>
+						<br> <code>}</code>
+						<br> </div>
+					<p><b>Child</b> ts file</p>
+					<p>Fom parent component we will get valueToChild as a Input to Child Component</p>
+					<div class="editor-container"> <code>//childcomponent.ts</code>
+						<br>
+						<br> <code>import { Component, OnInit, Input} from '@angular/core';</code>
+						<br>
+						<br> <code>@Component({</code>
+						<br> <code>selector: 'app-child'</code>
+						<br> <code>templateUrl: './child.component.html'</code>
+						<br> <code>styleUrls: './child.component.css'</code>
+						<br> <code>})</code>
+						<br>
+						<br> <code>export class ChildComponent OnInit { </code>
+						<br>
+						<br> <code>@Input() valueToChild: string;</code>
+						<br>
+						<br> <code>ngOnInit() {} </code>
+						<br>
+						<br> <code>}</code>
+						<br> </div>
+					<p><b>Parent</b> html file</p>
+					<p>To pass value from parent to child we need to mention child component selector name inside parent component html file</p>
+					<div class="editor-container"> <code>//parentcomponent.html</code>
+						<br>
+						<br> <code>&lt;app-child&gt;&lt;/app-child&gt;</code> </div>
+					<p>Now we will pass our input value to child by declaring it inside child component tag</p>
+					<div class="editor-container"> <code>//parentcomponent.html</code>
+						<br>
+						<br> <code>&lt;app-child &nbsp;[valueToChild]="valueToChild"&nbsp&gt;&lt;/app-child&gt;</code> </div>
+					<p><b>Child</b> html file</p>
+					<p>Now we recieved value from parent component . Now we want to bind that value in child component html</p>
+					<div class="editor-container"> <code>//childcomponent.html</code>
+						<br>
+						<br> <code>{{valueToChild}}</code> </div>
+					<br>
+					<div class="editor-container"> <code>//In Browser</code>
+						<br>
+						<br> <code>Im from parent component</code> </div>
+					<p><b>Same way we can make communication from child to parent</b></p>
+					<p>For that we need to declare Output emitter inside child component ts file</p>
+					<p><b>Child</b> ts file</p>
+					<p>Fom Child component we will pass valueToParent as a Output to Parent Component</p>
+					<div class="editor-container"> <code>//childcomponent.ts</code>
+						<br>
+						<br> <code>import { Component, OnInit, Input, Output} from '@angular/core';</code>
+						<br>
+						<br> <code>@Component({</code>
+						<br> <code>selector: 'app-child'</code>
+						<br> <code>templateUrl: './child.component.html'</code>
+						<br> <code>styleUrls: './child.component.css'</code>
+						<br> <code>})</code>
+						<br>
+						<br> <code>export class ChildComponent OnInit { </code>
+						<br>
+						<br> <code>@Input() valueToChild: string;</code>
+						<br>
+						<br> <code>@Output() parentEventEmitter = new EventEmitter<string>();</code>
+						<br>
+						<br> <code>public valueToParent: string = 'Im from Child component";</code>
+						<br>
+						<br> <code>ngOnInit() {} </code>
+						<br>
+						<br> <code>passValueToParent() {</code>
+						<br>
+						<br> <code>this.parentEventEmitter.emit(valueToParent);</code>
+						<br>
+						<br> <code>}</code>
+						<br>
+						<br> <code>}</code>
+						<br> </div>
+					<br>
+					<p><b>Child</b> html file</p>
+					<p>To pass value from child to parent we will make a trigger event. Buy clicking on button we will trigger the output emitter
+						<br>from inside the click event</p>
+					<div class="editor-container"> <code>//childcomponent.html</code>
+						<br>
+						<br> <code>{{valueToChild}}</code>
+						<br>
+						<br> <code>&nbsp;&lt;button (click)="passValueToParent()"&gt;Click me to pass value to parent&lt;/button&gt;</code> </div>
+					<br>
+					<div class="editor-container"> <code>//In Browser</code>
+						<br>
+						<br> <code>Im from parent component</code>
+						<br>
+						<br>
+						<button (click)="passValueToParent()">Click me to pass value to parent</button>
+						</code>
+					</div>
+					<br>
+					<p><b>Parent</b> html file</p>
+					<p>To get value from child to parent we need to pass the output emitter name here.</p>
+					<p>Now we will pass our input value to child by declaring it inside child component tag</p>
+					<div class="editor-container"> <code>//parentcomponent.html</code>
+						<br>
+						<br> <code>&lt;app-child &nbsp;[valueToChild]="valueToChild"&nbsp;(parentEventEmitter)="clickEventInsideParent($event)"&nbsp;&gt;&lt;/app-child&gt;</code> </div>
+					<p><b>Parent</b> ts file</p>
+					<p>Fom parent component we will pass valueToChild as a Input to Child Component</p>
+					<div class="editor-container"> <code>//parentcomponent.ts</code>
+						<br>
+						<br> <code>public valueToChild: string = 'Im from parent component";</code>
+						<br>
+						<br> <code>public valueFromChild = '';</code>
+						<br>
+						<br> <code>export class ParentComponent { </code>
+						<br>
+						<br> <code>ngOnInit() {} </code>
+						<br>
+						<br> <code>clickEventInsideParent(event) {</code>
+						<br>
+						<br> <code>this.valueFromChild = event;</code>
+						<br>
+						<br> <code>}</code>
+						<br>
+						<br> <code>}</code>
+						<br> </div>
+					<br>
+					<p><b>Parent</b> html file</p>
+					<p>To get value from child to parent we need to pass the output emitter name here.</p>
+					<p>Now we will pass our input value to child by declaring it inside child component tag</p>
+					<div class="editor-container"> <code>//parentcomponent.html</code>
+						<br>
+						<br> <code>&lt;app-child &nbsp;[valueToChild]="valueToChild"&nbsp;(parentEventEmitter)="clickEventInsideParent($event)"&nbsp;&gt;&lt;/app-child&gt;</code>
+						<br> <code>&lt;input type="text" [(ngModel)]="valueFromChild" placeholder="Enter user name here"&gt;</code> </div>
+					<br>
+					<div class="editor-container"> <code>//In Browser</code>
+						<br>
+						<br> <code>Im from Child component</code> </div>
+				</div>
+			</details>
+		</article>
+		<article>
+			<details>
+				<summary>9. Filter Pipe</summary>
+				<div class="main-container">
+					<p>The Pipe and Filter is an architectural pattern for stream processing. It consists of one or more components called ​filters​. These filters will
+						<br>transform or filter data and then pass it on via connectors called ​pipes​.</p>
+					<h4>Example:</h4>
+					<p>In the template, we have an input element that uses two-way binding to store the user input in a property called filterBy. Remember to import
+						<br>FormsModule in AppModule to use two-way binding in your app.</p>
+					<div class="editor-container"> <code>//component.html</code>
+						<br> <code>&nbsp;&lt;div&gt;<code><br>
+		<code>&nbsp;&nbsp;&lt;label for="filter"&gt;Filter by:&lt;/label&gt;<code><br>
+		<code>&nbsp;&nbsp;&lt;input type="text" id="filter" [(ngModel)]="filterBy" /&gt;<code><br>
+		<code>&nbsp;&lt;/div&gt;<code><br><br>
+									<br>
+									<code><span>&lt;table&nbsp;<span class="keyword">class</span><span>=</span><span class="string">'table'</span><span>&gt;&nbsp;&nbsp;</span></span>
+									</code>
+						<br> <code><span>&nbsp;&lt;thead&gt;&nbsp;&nbsp;</span></code>
+						<br> <code><span>&nbsp;&nbsp;&lt;tr&gt;&nbsp;&nbsp;</span></code>
+						<br> <code><span>&nbsp;&nbsp;&nbsp;&lt;th&gt;Name&lt;/th&gt;&nbsp;&nbsp;</span></code>
+						<br> <code><span>&nbsp;&nbsp;&nbsp;&lt;th&gt;Age&lt;/th&gt;&nbsp;&nbsp;</span></code>
+						<br> <code><span>&nbsp;&nbsp;&nbsp;&lt;th&gt;Class&lt;/th&gt;&nbsp;&nbsp;</span></code>
+						<br> <code><span>&nbsp;&nbsp;&nbsp;&lt;th&gt;StudentId&nbsp;&lt;/th&gt;&nbsp;&nbsp;</span></code>
+						<br> <code><span>&nbsp;&nbsp;&lt;/tr&gt;&nbsp;&nbsp;</span></code>
+						<br> <code><span>&nbsp;&lt;/thead&gt;&nbsp;&nbsp;</span></code>
+						<br> <code><span>&nbsp;&lt;tbody&gt;&nbsp;&nbsp;</span></code>
+						<br> <code><span>&nbsp;&nbsp;&lt;tr&nbsp;*ngFor=<span class="string">"let&nbsp;item&nbsp;of&nbsp;studentsList;"</span><span>&gt;&nbsp;&nbsp;</span></span>
+									</code>
+						<br> <code><span>&nbsp;&nbsp;&nbsp;&lt;td&gt;{{item.name}}&lt;/td&gt;&nbsp;&nbsp;</span></code>
+						<br> <code><span>&nbsp;&nbsp;&nbsp;&lt;td&gt;{{item.age}}&lt;/td&gt;&nbsp;&nbsp;</span></code>
+						<br> <code><span>&nbsp;&nbsp;&nbsp;&lt;td&gt;{{item.class}}&lt;/td&gt;&nbsp;&nbsp;</span></code>
+						<br> <code><span>&nbsp;&nbsp;&nbsp;&lt;td&nbsp;[ngStyle]="{'background-color':item.section === 'A' ? 'green' : 'red' }"&nbsp;&gt;{{item.section}}&lt;/td&gt;&nbsp;&nbsp;</span></code>
+						<br> <code><span>&nbsp;&nbsp;&lt;/tr&gt;&nbsp;&nbsp;</span></code>
+						<br> <code><span>&nbsp;&lt;/tbody&gt;&nbsp;&nbsp;</span></code>
+						<br> <code><span>&lt;/table&gt;&nbsp;&nbsp;</span></code>
+						<br> </div>
+					<br>
+					<div class="editor-container"> <code>//component.ts</code>
+						<br>
+						<br> <code>public studentsList: any[] = [</code>
+						<br> <code>&nbsp;&nbsp;{name: 'Ranjith', age: 25, class: '10th', section: 'A' },</code>
+						<br> <code>&nbsp;&nbsp;{name: 'Hari', age: 22, class: '8th', section: 'B' },</code>
+						<br> <code>&nbsp;&nbsp;{name: 'Vignesh', age: 22, class: '8th', section: 'A' },</code>
+						<br> <code>]</code>
+						<br> <code>export class NgForExample { </code>
+						<br>
+						<br> <code>filterBy;</code>
+						<br>
+						<br> <code>ngOnInit() {} </code>
+						<br> <code>}</code>
+						<br> </div>
+					<p>Each student is an object with several properties. For our purpose, it suffices to know that one of the properties is <b>name</b></p>
+					<p>We want to filter students by name.</p>
+					<p>Now our app will look like this in browser</p>
+					<div class="editor-container"> <code>//In Browser</code>
+						<div>
+							<label for="filter">&nbsp;Filter by:</label>
+							<input type="text" id="filter" [(ngModel)]="filterBy" /> </div>
+						<br>
+						<br>
+						<table>
+							<tr>
+								<th>Name</th>
+								<th>Age</th>
+								<th>Class</th>
+								<th>Section</th>
+							</tr>
+							<tr>
+								<td>Ranjith</td>
+								<td>25</td>
+								<td>10th</td>
+								<td style="background-color: green">A</td>
+							</tr>
+							<tr>
+								<td>Hari</td>
+								<td>22</td>
+								<td>8th</td>
+								<td style="background-color: red">B</td>
+							</tr>
+							<tr>
+								<td>Vignesh</td>
+								<td>22</td>
+								<td>8th</td>
+								<td style="background-color: green">A</td>
+							</tr>
+						</table>
+					</div>
+					<br>
+					<h4>Creating pipe filter</h4>
+					<p>Let’s start by using the Angular CLI command <b>ng generate pipe filter</b>, where <b>filter</b> is the pipe name that will be used in template bindings.</p>
+					<p>Our PipeFilter file will look like this</p>
+					<div class="editor-container"> <code>//childcomponent.ts</code>
+						<br>
+						<br> <code>import { Pipe, PipeTransform } from '@angular/core';</code>
+						<br>
+						<br> <code>@Pipe({</code>
+						<br> <code>&nbsp;name: 'filter'</code>
+						<br> <code>})</code>
+						<br>
+						<br> <code>export class FilterPipe implements PipeTransform {</code>
+						<br>
+						<br> <code>transform(value: any, args?: any): any {</code>
+						<br>
+						<br> <code> &nbsp;&nbsp;return null; </code>
+						<br>
+						<br> <code>}</code>
+						<br>
+						<br> <code>}</code> </div>
+					<br>
+					<p>In the transform method, <b>value</b> is the value on the left side of the pipe in the template while <b>args?</b> is an optional argument that we will
+						<br>use to filter value.</p>
+					<p>To use this filter, we can simply add it to the template as follows:</p>
+					<div class="editor-container"> <code>//component.html</code>
+						<br>
+						<br> <code>&lt;div *ngFor="let item of studentsList | filter"&gt;</code>
+						<br> </div>
+					<br>
+					<p>First, we update the arguments of the transform method with this code:</p>
+					<div class="editor-container"> <code>//inside filter pipe</code>
+						<br>
+						<br> <code>transform(value: studentsList[], filterString: string, property: string)</code>
+						<br> </div>
+					<br>
+					<p>We discussed value above. The type of value is an array of objects that are shaped like the User interface
+						<br>
+						<br>The second argument is filterString of type string. The value of filterString has to come from the template. Therefore, we will
+						<br>add a parameter to the pipe. The parameter will be filterBy that is the user input, e.g., the string the user wants to use as a filter.
+						<br>
+						<br> The third and last argument is property. Since our user objects contain several properties, we need to specify which property we want to use</p>
+					<h4>Filtering logic in the transform method</h4>
+					<p>We start by adding some code to return every value when there is no filter.</p>
+					<div class="editor-container"> <code>//filter pipe</code>
+						<br>
+						<br> <code>if (value.length === 0 || !filterString) {</code>
+						<br>
+						<br> <code>&nbsp;&nbsp;return value;</code>
+						<br>
+						<br> <code>}</code> </div>
+					<p>Then, we add the logic to filter based on the user’s string.</p>
+					<div class="editor-container"> <code>//filter pipe</code>
+						<br>
+						<br> <code>let filteredUsers: any[] = [];</code>
+						<br>
+						<br> <code>for (let user of value) {</code>
+						<br>
+						<br> <code>&nbsp;if (user[property].includes(filterString)) {</code>
+						<br>
+						<br> <code>&nbsp;&nbsp;filteredUsers.push(user);</code>
+						<br>
+						<br> <code>&nbsp;}</code>
+						<br>
+						<br> <code>}</code>
+						<br> <code>return filteredUsers;</code> </div>
+					<p>If the user’s name includes the filterBystring, add this user to the filteredUsersarray” that is eventually returned.This is FilterPipe so far:</p>
+					<div class="editor-container"> <code>//filter pipe</code>
+						<br>
+						<br>
+						<br> <code>import { Pipe, PipeTransform } from '@angular/core';</code>
+						<br>
+						<br> <code>@Pipe({</code>
+						<br> <code>&nbsp;name: 'filter'</code>
+						<br> <code>})</code>
+						<br>
+						<br> <code>export class FilterPipe implements PipeTransform {</code>
+						<br>
+						<br> <code>transform(value: User[], filterString: string, property: string): User[] {</code>
+						<br>
+						<br> <code>if (value.length === 0 || !filterString) {</code>
+						<br>
+						<br> <code>&nbsp;&nbsp;return value;</code>
+						<br>
+						<br> <code>}</code>
+						<br> <code>let filteredUsers: any[] = [];</code>
+						<br>
+						<br> <code>for (let user of value) {</code>
+						<br>
+						<br> <code>&nbsp;if (user[property].toLowerCase().includes(filterString.toLowerCase())) {</code>
+						<br>
+						<br> <code>&nbsp;&nbsp;filteredUsers.push(user);</code>
+						<br>
+						<br> <code>&nbsp;}</code>
+						<br>
+						<br> <code>}</code>
+						<br> <code>return filteredUsers;</code>
+						<br> <code>}</code>
+						<br>
+						<br> <code>}</code>
+						<br> </div>
+						<p>In browser its look like</p>
+						<div class="editor-container"> <code>//In Browser</code>
+						<div>
+							<label for="filter">Filter by:</label>
+							<input type="text" id="filter" value="ranjith" [(ngModel)]="filterBy" /> </div>
+						<br>
+						<br>
+						<table>
+							<tr>
+								<th>Name</th>
+								<th>Age</th>
+								<th>Class</th>
+								<th>Section</th>
+							</tr>
+							<tr>
+								<td>Ranjith</td>
+								<td>25</td>
+								<td>10th</td>
+								<td style="background-color: green">A</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<br> </details>
+		</article>
+		</div>
+		</div>
+		</div>
+	</section>
+</body>
+
+</html>
